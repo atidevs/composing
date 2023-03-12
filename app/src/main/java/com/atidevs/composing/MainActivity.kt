@@ -58,13 +58,13 @@ class MainActivity : ComponentActivity() {
                     style = MaterialTheme.typography.subtitle2
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                Surface {
-
+                Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp) {
+                    Text(
+                        text = msg.body,
+                        modifier = Modifier.padding(all = 4.dp),
+                        style = MaterialTheme.typography.body2
+                    )
                 }
-                Text(
-                    text = msg.body,
-                    style = MaterialTheme.typography.body2
-                )
             }
         }
     }
