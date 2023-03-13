@@ -33,7 +33,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposingTheme {
                 Surface {
-                    Conversation(messages = SampleData.conversationSample)
+                    Conversation(
+                        messages = SampleData.conversationSample,
+                        modifier = Modifier.fillMaxSize()
+                    )
                 }
             }
         }
@@ -41,9 +44,10 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun MessageCard(
-        msg: Message
+        msg: Message,
+        modifier: Modifier = Modifier
     ) {
-        Row(modifier = Modifier.padding(all = 8.dp)) {
+        Row(modifier = modifier.padding(all = 8.dp)) {
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
                 contentDescription = "${msg.author} Profile Picture",
@@ -98,10 +102,10 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun Conversation(messages: List<Message>) {
+    fun Conversation(messages: List<Message>, modifier: Modifier = Modifier) {
         LazyColumn {
             items(messages) { message ->
-                MessageCard(message)
+                MessageCard(message, modifier)
             }
         }
     }
